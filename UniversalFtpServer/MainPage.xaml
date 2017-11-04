@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="UniversalFtpServer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UniversalFtpServer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <RelativePanel x:Name="rootPanel" Background="{ThemeResource SystemControlAltMediumLowAcrylicWindowMediumBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="widthStateGroup">
+                <VisualState x:Name="wideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="400"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="controlPanel.(RelativePanel.AlignRightWithPanel)" Value="False"/>
+                        <Setter Target="statusPanel.(RelativePanel.AlignLeftWithPanel)" Value="False"/>
+                        <Setter Target="statusPanel.(RelativePanel.Below)" Value=""/>
+                        <Setter Target="statusPanel.(RelativePanel.RightOf)" Value="controlPanel"/>
+                        <Setter Target="controlPanel.(FrameworkElement.Width)" Value="200"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="narrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="runningStateGroup">
+                <VisualState x:Name="runningState">
+                    <VisualState.Setters>
+                        <Setter Target="startButton.(UIElement.Visibility)" Value="Collapsed"/>
+                        <Setter Target="stopButton.(UIElement.Visibility)" Value="Visible"/>
+                        <Setter Target="portBox.(Control.IsEnabled)" Value="False"/>
+                        <Setter Target="allowAnonymousBox.(Control.IsEnabled)" Value="False"/>
+                        <Setter Target="userNameBox.(Control.IsEnabled)" Value="False"/>
+                        <Setter Target="passwordBox.(Control.IsEnabled)" Value="False"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="stoppedState">
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="anonymousStateGroup">
+                <VisualState x:Name="anonymousState">
+                    <VisualState.Setters>
+                        <Setter Target="userNameBox.IsEnabled" Value="False"/>
+                        <Setter Target="passwordBox.IsEnabled" Value="False"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="notAnonymousState"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel x:Name="controlPanel" Orientation="Vertical" Margin="12" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <Button x:Name="launchFolderButton" Margin="4" Content="Open folder" Click="LaunchFolderButton_Click"/>
+            <TextBox x:Name="portBox" Header="Port" Margin="4" Text="2000"/>
+            <CheckBox x:Name="allowAnonymousBox" Margin="4" Content="Allow anonymous" Checked="allowAnonymousBox_Checked" Unchecked="allowAnonymousBox_Unchecked"/>
+            <TextBox x:Name="userNameBox" Header="User Name" Margin="4" Text="ftp"/>
+            <TextBox x:Name="passwordBox" Header="Password" Margin="4" Text="ftp"/>
+            <Button x:Name="startButton" Content="Start" Margin="4" Click="StartButton_Click"/>
+            <Button x:Name="stopButton" Content="Stop" Margin="4" Visibility="Collapsed" Click="StopButton_Click"/>
+        </StackPanel>
+        <StackPanel x:Name="statusPanel" Orientation="Vertical" Margin="12" RelativePanel.Below="controlPanel" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <RichTextBlock x:Name="noteBlock">
+                <Paragraph FontWeight="Bold">Important notes:</Paragraph>
+                <Paragraph TextIndent="12">For security considerations, important ports including 21 are blocked by Windows.</Paragraph>
+                <Paragraph TextIndent="12">You can only access the FTP server from another device.</Paragraph>
+            </RichTextBlock>
+            <TextBlock x:Name="statusBlock4"/>
+            <TextBlock x:Name="statusBlock6"/>
+            <ListView x:Name="connectedUsersList"/>
+        </StackPanel>
+    </RelativePanel>
+</Page>
