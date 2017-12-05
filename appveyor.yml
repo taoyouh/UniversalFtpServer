@@ -1,0 +1,44 @@
+version: Build {build}
+branches:
+  only:
+  - master
+  - dev
+skip_branch_with_pr: true
+image: Visual Studio 2017
+environment:
+  PUBLISH_CLIENTSECRET:
+    secure: u2MqrnmS+4jSw1IQjBViTCmrVJ5OUo8bvswGz3HcF4L+qX2ZPYNrPRSKfOpWMUvr
+build_script:
+- ps: >-
+    .\Build\BuildConfig.ps1
+
+    .\Build\AppVeyorBuild.ps1
+    
+artifacts:
+- path: '.\AppxPackages'
+  name: AppxPackages
+deploy_script:
+- ps: >-
+    if ($env:APPVEYOR_REPO_BRANCH -eq "master")
+    {
+        if (-not [String]::IsNullOrEmpty($env:clientSecret))
+        {
+            try
+            {
+                .\Publish\InstallStoreBroker.ps1
+                .\Publish\PublishConfig.ps1
+                .\Publish\PublishToStore.ps1
+                Add-AppveyorMessage "Published to Store"
+            }
+            catch
+            {
+                Add-AppveyorMessage "Publishing to Store failed. " -Category Error
+                exit 1
+            }
+        }
+        else
+        {
+            Add-AppveyorMessage "Environment variable clientSecret is not set. " -Category Error 
+            exit 1
+        }
+    }
