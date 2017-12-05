@@ -118,65 +118,65 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Dialog_Ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>确定</value>
   </data>
   <data name="MainPage_AllowAnonymousBox.Content" xml:space="preserve">
-    <value>Allow anonymous</value>
+    <value>允许匿名登陆</value>
   </data>
   <data name="MainPage_ImportantNotes_Para1.Text" xml:space="preserve">
-    <value>Important notes:</value>
+    <value>重要提示：</value>
   </data>
   <data name="MainPage_ImportantNotes_Para2.Text" xml:space="preserve">
-    <value>For security considerations, important ports including 21 are blocked by Windows.</value>
+    <value>出于安全考虑，包括21端口在内的重要端口会被Windows阻止，请使用其他端口。</value>
   </data>
   <data name="MainPage_ImportantNotes_Para3.Text" xml:space="preserve">
-    <value>You can only access the FTP server from another device.</value>
+    <value>出于安全考虑，你只能从其他电脑上连接该FTP服务器，而不能在本机访问该FTP服务器。</value>
   </data>
   <data name="MainPage_Ipv4Error" xml:space="preserve">
-    <value>Server at IPv4 error: 
+    <value>IPv4服务器出错: 
 {0}</value>
     <comment>{0} is the error message</comment>
   </data>
   <data name="MainPage_Ipv4Listening" xml:space="preserve">
-    <value>Server at IPv4 is listening at port {0}</value>
+    <value>IPv4服务器正在监听端口{0}</value>
     <comment>{0} is the port number listening to</comment>
   </data>
   <data name="MainPage_Ipv4Stopped" xml:space="preserve">
-    <value>Server at IPv4 stopped</value>
+    <value>IPv4服务器已停止</value>
     <comment>The server is stopped by user</comment>
   </data>
   <data name="MainPage_Ipv6Error" xml:space="preserve">
-    <value>Server at IPv6 error: 
+    <value>IPv6服务器出错：
 {0}</value>
     <comment>{0} is the error message</comment>
   </data>
   <data name="MainPage_Ipv6Listening" xml:space="preserve">
-    <value>Server at IPv6 is listening at port {0}</value>
+    <value>IPv6服务器正在监听端口{0}</value>
     <comment>{0} is the port number listening to</comment>
   </data>
   <data name="MainPage_Ipv6Stopped" xml:space="preserve">
-    <value>Server at IPv6 stopped</value>
+    <value>IPv6服务器已停止</value>
     <comment>The server is stopped by user</comment>
   </data>
   <data name="MainPage_LaunchFolderButton.Content" xml:space="preserve">
-    <value>Open folder</value>
+    <value>打开文件夹</value>
   </data>
   <data name="MainPage_PasswordBox.Header" xml:space="preserve">
-    <value>Password</value>
+    <value>密码</value>
   </data>
   <data name="MainPage_PortBox.Header" xml:space="preserve">
-    <value>Port</value>
+    <value>端口号</value>
   </data>
   <data name="MainPage_PortIncorrect" xml:space="preserve">
-    <value>The port number you entered is not legal number</value>
+    <value>你输入的端口号不是一个合法的数字。</value>
   </data>
   <data name="MainPage_StartButton.Content" xml:space="preserve">
-    <value>Start</value>
+    <value>启动服务器</value>
   </data>
   <data name="MainPage_StopButton.Content" xml:space="preserve">
-    <value>Stop</value>
+    <value>停止服务器</value>
   </data>
   <data name="MainPage_UserNameBox.Header" xml:space="preserve">
-    <value>User name</value>
+    <value>用户名</value>
   </data>
 </root>
