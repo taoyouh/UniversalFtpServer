@@ -120,6 +120,9 @@
   <data name="Dialog_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="MainPage_AddressesHint.Text" xml:space="preserve">
+    <value>Addresses of this device:</value>
+  </data>
   <data name="MainPage_AllowAnonymousBox.Content" xml:space="preserve">
     <value>Allow anonymous</value>
   </data>
@@ -169,6 +172,9 @@
   </data>
   <data name="MainPage_PortIncorrect" xml:space="preserve">
     <value>The port number you entered is not legal number</value>
+  </data>
+  <data name="MainPage_ServerStatusHint.Text" xml:space="preserve">
+    <value>Status:</value>
   </data>
   <data name="MainPage_StartButton.Content" xml:space="preserve">
     <value>Start</value>

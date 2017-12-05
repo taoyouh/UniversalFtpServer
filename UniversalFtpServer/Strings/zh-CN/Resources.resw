@@ -120,6 +120,9 @@
   <data name="Dialog_Ok" xml:space="preserve">
     <value>确定</value>
   </data>
+  <data name="MainPage_AddressesHint.Text" xml:space="preserve">
+    <value>本机地址：</value>
+  </data>
   <data name="MainPage_AllowAnonymousBox.Content" xml:space="preserve">
     <value>允许匿名登陆</value>
   </data>
@@ -169,6 +172,9 @@
   </data>
   <data name="MainPage_PortIncorrect" xml:space="preserve">
     <value>你输入的端口号不是一个合法的数字。</value>
+  </data>
+  <data name="MainPage_ServerStatusHint.Text" xml:space="preserve">
+    <value>状态：</value>
   </data>
   <data name="MainPage_StartButton.Content" xml:space="preserve">
     <value>启动服务器</value>

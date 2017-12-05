@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System;
@@ -53,6 +54,14 @@ namespace UniversalFtpServer
             rootFolder = ApplicationData.Current.LocalFolder;
             rootPath = rootFolder.Path;
             allowAnonymousBox.IsChecked = true;
+
+            var addresses = from host in NetworkInformation.GetHostNames()
+                            where host.Type == Windows.Networking.HostNameType.DomainName ||
+                                  host.Type == Windows.Networking.HostNameType.Ipv4 ||
+                                  host.Type == Windows.Networking.HostNameType.Ipv6
+                            select host.DisplayName;
+            addressesBlock.Text = string.Join('\n', addresses);
+            NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
         }
 
         private async void StartButton_Click(object sender, RoutedEventArgs e)
@@ -121,6 +130,16 @@ namespace UniversalFtpServer
                     else
                         statusBlock6.Text = loader.GetString(Ipv6Stopped);
                 }));
+        }
+
+        private async void NetworkInformation_NetworkStatusChanged(object sender)
+        {
+            var addresses = from host in NetworkInformation.GetHostNames()
+                            select host.DisplayName;
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                addressesBlock.Text = string.Join('\n', addresses);
+            });
         }
 
         private void NotifyUser(string v)
