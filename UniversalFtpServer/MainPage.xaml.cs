@@ -39,6 +39,10 @@ namespace UniversalFtpServer
         const string Ipv6Stopped = "MainPage_Ipv6Stopped";
         const string Ok = "Dialog_Ok";
         const string PortIncorrect = "MainPage_PortIncorrect";
+        const string PortNumberSetting = "PortNumber";
+        const string AllowAnonymousSetting = "AllowAnonymous";
+        const string UserNameSetting = "UserName";
+        const string PasswordSetting = "Password";
 
         FtpServer server4;
         Task server4Run;
@@ -51,9 +55,22 @@ namespace UniversalFtpServer
         public MainPage()
         {
             this.InitializeComponent();
+            Loaded += MainPage_Loaded;
+            Unloaded += MainPage_Unloaded;
             rootFolder = ApplicationData.Current.LocalFolder;
             rootPath = rootFolder.Path;
-            allowAnonymousBox.IsChecked = true;
+
+            var settings = ApplicationData.Current.LocalSettings;
+            if (settings.Values[PortNumberSetting] is int port)
+                portBox.Text = port.ToString();
+            if (settings.Values[AllowAnonymousSetting] is bool allowAnonymous)
+                allowAnonymousBox.IsChecked = allowAnonymous;
+            else
+                allowAnonymousBox.IsChecked = true;
+            if (settings.Values[UserNameSetting] is string userName)
+                userNameBox.Text = userName;
+            if (settings.Values[PasswordSetting] is string password)
+                passwordBox.Text = password;
 
             var addresses = from host in NetworkInformation.GetHostNames()
                             where host.Type == Windows.Networking.HostNameType.DomainName ||
@@ -62,6 +79,32 @@ namespace UniversalFtpServer
                             select host.DisplayName;
             addressesBlock.Text = string.Join('\n', addresses);
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
+        }
+
+        private void MainPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Suspending -= App_Suspending;
+        }
+
+        private void App_Suspending(object sender, Windows.ApplicationModel.SuspendingEventArgs e)
+        {
+            var settings = ApplicationData.Current.LocalSettings;
+
+            if (int.TryParse(portBox.Text, out int port))
+                settings.Values[PortNumberSetting] = port;
+
+            var allowAnonymous = allowAnonymousBox.IsChecked == true;
+            string userName = userNameBox.Text;
+            string password = passwordBox.Text;
+
+            settings.Values[AllowAnonymousSetting] = allowAnonymous;
+            settings.Values[UserNameSetting] = userName;
+            settings.Values[PasswordSetting] = password;
+        }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Suspending += App_Suspending;
         }
 
         private async void StartButton_Click(object sender, RoutedEventArgs e)
@@ -75,12 +118,14 @@ namespace UniversalFtpServer
             }
 
             var allowAnonymous = allowAnonymousBox.IsChecked == true;
-            string userName = string.Empty, password = string.Empty;
-            if (!allowAnonymous)
-            {
-                userName = userNameBox.Text;
-                password = passwordBox.Text;
-            }
+            string userName = userNameBox.Text;
+            string password = passwordBox.Text;
+
+            var settings = ApplicationData.Current.LocalSettings;
+            settings.Values[PortNumberSetting] = port;
+            settings.Values[AllowAnonymousSetting] = allowAnonymous;
+            settings.Values[UserNameSetting] = userName;
+            settings.Values[PasswordSetting] = password;
 
             var x = VisualStateManager.GoToState(this, nameof(runningState), true);
 

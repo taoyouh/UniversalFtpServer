@@ -46,7 +46,7 @@
   <SupportContactInfo _locID="App_SupportContactInfo">
     <!-- _locComment_text="{MaxLength=2048} Support Contact Info" -->zhaobang.china@hotmail.com
   </SupportContactInfo>
-  <PrivacyPolicyURL _locID="App_PrivacyURL">
+  <PrivacyPolicyURL _locID="App_PrivacyURL">https://github.com/ZhaobangChina/UniversalFtpServer/blob/master/PrivacyPolicy/PrivacyPolicy-en-us.md
     <!-- _locComment_text="{MaxLength=2048} Privacy Policy URL" -->
   </PrivacyPolicyURL>
 </ProductDescription>
