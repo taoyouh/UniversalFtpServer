@@ -21,7 +21,7 @@ deploy_script:
 - ps: >-
     if ($env:APPVEYOR_REPO_BRANCH -eq "master")
     {
-        if (-not [String]::IsNullOrEmpty($env:clientSecret))
+        if (-not [String]::IsNullOrEmpty($env:PUBLISH_CLIENTSECRET))
         {
             try
             {
