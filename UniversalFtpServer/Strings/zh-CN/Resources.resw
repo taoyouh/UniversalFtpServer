@@ -124,7 +124,7 @@
     <value>本机地址：</value>
   </data>
   <data name="MainPage_AllowAnonymousBox.Content" xml:space="preserve">
-    <value>允许匿名登陆</value>
+    <value>允许匿名登录</value>
   </data>
   <data name="MainPage_ImportantNotes_Para1.Text" xml:space="preserve">
     <value>重要提示：</value>
