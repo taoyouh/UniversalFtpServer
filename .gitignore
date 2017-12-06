@@ -174,7 +174,7 @@ rcf/
 # Windows Store app package directories and files
 AppPackages/
 BundleArtifacts/
-Package.StoreAssociation.xml
+# Package.StoreAssociation.xml
 _pkginfo.txt
 
 # Visual Studio cache files
@@ -191,6 +191,7 @@ ClientBin/
 *.dbproj.schemaview
 *.jfm
 *.pfx
+!UniversalFtpServer/UniversalFtpServer_StoreKey.pfx
 *.publishsettings
 node_modules/
 orleans.codegen.cs
