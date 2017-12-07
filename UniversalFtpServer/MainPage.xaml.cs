@@ -43,6 +43,7 @@ namespace UniversalFtpServer
         const string AllowAnonymousSetting = "AllowAnonymous";
         const string UserNameSetting = "UserName";
         const string PasswordSetting = "Password";
+        const string SettingVersionSetting = "SettingVersion";
 
         FtpServer server4;
         Task server4Run;
@@ -61,6 +62,11 @@ namespace UniversalFtpServer
             rootPath = rootFolder.Path;
 
             var settings = ApplicationData.Current.LocalSettings;
+            if (!(settings.Values[SettingVersionSetting] is int version && version == 1))
+            {
+                settings.Values[SettingVersionSetting] = 1;
+                settings.Values[PortNumberSetting] = 21;
+            }
             if (settings.Values[PortNumberSetting] is int port)
                 portBox.Text = port.ToString();
             if (settings.Values[AllowAnonymousSetting] is bool allowAnonymous)

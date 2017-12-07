@@ -138,9 +138,6 @@
   <data name="MainPage_ImportantNotes_Para1.Text" xml:space="preserve">
     <value>Important notes:</value>
   </data>
-  <data name="MainPage_ImportantNotes_Para2.Text" xml:space="preserve">
-    <value>For security considerations, important ports including 21 are blocked by Windows.</value>
-  </data>
   <data name="MainPage_ImportantNotes_Para3.Text" xml:space="preserve">
     <value>You can only access the FTP server from another device.</value>
   </data>

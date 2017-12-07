@@ -138,9 +138,6 @@
   <data name="MainPage_ImportantNotes_Para1.Text" xml:space="preserve">
     <value>重要提示：</value>
   </data>
-  <data name="MainPage_ImportantNotes_Para2.Text" xml:space="preserve">
-    <value>出于安全考虑，包括21端口在内的重要端口会被Windows阻止，请使用其他端口。</value>
-  </data>
   <data name="MainPage_ImportantNotes_Para3.Text" xml:space="preserve">
     <value>出于安全考虑，你只能从其他电脑上连接该FTP服务器，而不能在本机访问该FTP服务器。</value>
   </data>
