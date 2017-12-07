@@ -162,8 +162,16 @@ namespace UniversalFtpServer
             {
                 if (allowAnonymous)
                 {
-                    server4 = new FtpServer(ep4, rootPath);
-                    server6 = new FtpServer(ep6, rootPath);
+                    server4 = new FtpServer(
+                        ep4,
+                        new UwpFileProviderFactory(rootPath),
+                        new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
+                        new Zhaobang.FtpServer.Authenticate.AnonymousAuthenticator());
+                    server6 = new FtpServer(
+                        ep6,
+                        new UwpFileProviderFactory(rootPath),
+                        new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
+                        new Zhaobang.FtpServer.Authenticate.AnonymousAuthenticator());
                 }
                 else
                 {
@@ -225,7 +233,11 @@ namespace UniversalFtpServer
 
         private async void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            var x = VisualStateManager.GoToState(this, nameof(stoppedState), true);
+            VisualStateManager.GoToState(this, nameof(stoppedState), true);
+            if (allowAnonymousBox.IsChecked == true)
+                VisualStateManager.GoToState(this, nameof(anonymousState), false);
+            else
+                VisualStateManager.GoToState(this, nameof(notAnonymousState), false);
 
             cts?.Cancel();
             try { await server4Run; } catch { }
