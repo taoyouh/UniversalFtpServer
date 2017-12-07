@@ -33,6 +33,7 @@
             <VisualStateGroup x:Name="runningStateGroup">
                 <VisualState x:Name="runningState">
                     <VisualState.Setters>
+                        <Setter Target="pickFolderButton.(Control.IsEnabled)" Value="False"/>
                         <Setter Target="startButton.(UIElement.Visibility)" Value="Collapsed"/>
                         <Setter Target="stopButton.(UIElement.Visibility)" Value="Visible"/>
                         <Setter Target="portBox.(Control.IsEnabled)" Value="False"/>
@@ -82,7 +83,7 @@
                     <TextBlock x:Name="statusBlock6" Margin="12,0,0,0"/>
                     <TextBlock x:Uid="MainPage_AddressesHint" Text="Addresses of this computer:-" FontWeight="Bold"
                            Margin="0,4,0,0"/>
-                    <TextBlock x:Name="addressesBlock" Margin="12,0,0,0"/>
+                    <TextBlock x:Name="addressesBlock" Margin="12,0,0,0" IsTextSelectionEnabled="True"/>
                     <ListView x:Name="connectedUsersList"/>
                 </StackPanel>
             </RelativePanel>
