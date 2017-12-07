@@ -158,6 +158,7 @@ namespace UniversalFtpServer
                 }
             });
 
+            var server4Deferral = ExtendedExecutionHelper.GetDeferral();
             server4Run = server4.RunAsync(cts.Token).ContinueWith(async t =>
                 await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
@@ -165,8 +166,9 @@ namespace UniversalFtpServer
                         statusBlock4.Text = string.Format(loader.GetString(Ipv4Error), t.Exception);
                     else
                         statusBlock4.Text = loader.GetString(Ipv4Stopped);
-
+                    server4Deferral.Complete();
                 }));
+            var server6Deferral = ExtendedExecutionHelper.GetDeferral();
             server6Run = server6.RunAsync(cts.Token).ContinueWith(async t =>
                 await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
@@ -174,6 +176,7 @@ namespace UniversalFtpServer
                         statusBlock6.Text = string.Format(loader.GetString(Ipv6Error), t.Exception);
                     else
                         statusBlock6.Text = loader.GetString(Ipv6Stopped);
+                    server6Deferral.Complete();
                 }));
         }
 

@@ -120,6 +120,15 @@
   <data name="Dialog_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="ExtendedExecution_HelpFileUri" xml:space="preserve">
+    <value>ms-appx:///Help/en-us/background-running.html</value>
+  </data>
+  <data name="ExtendedExecution_LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="ExtendedExecution_Stopped" xml:space="preserve">
+    <value>The app stopped running in background. Click here to resume it.</value>
+  </data>
   <data name="MainPage_AddressesHint.Text" xml:space="preserve">
     <value>Addresses of this device:</value>
   </data>
