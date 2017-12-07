@@ -9,27 +9,29 @@
   <Keywords>
     <!-- Valid length: 30 character limit, up to 7 elements -->
     <Keyword _locID="App_keyword1"><!-- _locComment_text="{MaxLength=30} App keyword 1" -->FTP</Keyword>
-    <Keyword _locID="App_keyword2"><!-- _locComment_text="{MaxLength=30} App keyword 1" -->Server</Keyword>
-    <Keyword _locID="App_keyword3"><!-- _locComment_text="{MaxLength=30} App keyword 1" -->FTP Server</Keyword>    
-    <Keyword _locID="App_keyword4"><!-- _locComment_text="{MaxLength=30} App keyword 1" -->Intranet</Keyword>    
+    <Keyword _locID="App_keyword2"><!-- _locComment_text="{MaxLength=30} App keyword 2" -->Server</Keyword>
+    <Keyword _locID="App_keyword3"><!-- _locComment_text="{MaxLength=30} App keyword 3" -->FTP Server</Keyword>    
+    <Keyword _locID="App_keyword4"><!-- _locComment_text="{MaxLength=30} App keyword 4" -->Intranet</Keyword>    
   </Keywords>
   <Description _locID="App_Description">
     <!-- _locComment_text="{MaxLength=10000} App Description" -->Use this app to host a simple FTP server and easily share files with other computers.</Description>
   <ReleaseNotes _locID="App_ReleaseNotes">
-    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->
+    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->You can now use any folder as FTP root folder.
   </ReleaseNotes>
   <ScreenshotCaptions>
     <!-- Valid length: 200 character limit, up to 9 elements per platform -->
     <!-- Valid attributes: any of DesktopImage, MobileImage, XboxImage, SurfaceHubImage, and HoloLensImage -->
-    <Caption DesktopImage="屏幕截图(330).png" _locID="App_caption1">
+    <Caption DesktopImage="屏幕截图(347).png" _locID="App_caption1">
       <!-- _locComment_text="{MaxLength=200} Screenshot caption 1" -->
     </Caption>
   </ScreenshotCaptions>
   <AppFeatures>
     <!-- Valid length: 200 character limit, up to 20 elements -->
     <AppFeature _locID="App_feature1"><!-- _locComment_text="{MaxLength=200} App Feature 1" -->Host an FTP server and upload/download files from another device</AppFeature>
-    <AppFeature _locID="App_feature2"><!-- _locComment_text="{MaxLength=200} App Feature 1" -->Set a user name and a password or allow anonymous login</AppFeature>
-    <AppFeature _locID="App_feature3"><!-- _locComment_text="{MaxLength=200} App Feature 1" -->IPv4 and IPv6 supported</AppFeature>
+    <AppFeature _locID="App_feature2"><!-- _locComment_text="{MaxLength=200} App Feature 2" -->Set a user name and a password or allow anonymous login</AppFeature>
+    <AppFeature _locID="App_feature3"><!-- _locComment_text="{MaxLength=200} App Feature 3" -->IPv4 and IPv6 supported</AppFeature>
+    <AppFeature _locID="App_feature4"><!-- _locComment_text="{MaxLength=200} App Feature 4" -->Use any folder as FTP root folder</AppFeature>
+    <AppFeature _locID="App_feature5"><!-- _locComment_text="{MaxLength=200} App Feature 5" -->Keep running when minimized (varies with battery settings)</AppFeature>
   </AppFeatures>
   <RecommendedHardware>
     <!-- Valid length: 200 character limit, up to 11 elements -->

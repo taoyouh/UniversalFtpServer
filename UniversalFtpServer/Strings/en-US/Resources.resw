@@ -135,6 +135,9 @@
   <data name="MainPage_AllowAnonymousBox.Content" xml:space="preserve">
     <value>Allow anonymous</value>
   </data>
+  <data name="MainPage_ChangeFolderButton.Content" xml:space="preserve">
+    <value>Change folder</value>
+  </data>
   <data name="MainPage_ImportantNotes_Para1.Text" xml:space="preserve">
     <value>Important notes:</value>
   </data>
@@ -178,6 +181,9 @@
   </data>
   <data name="MainPage_PortIncorrect" xml:space="preserve">
     <value>The port number you entered is not legal number</value>
+  </data>
+  <data name="MainPage_RootFolderHint.Text" xml:space="preserve">
+    <value>Root folder:</value>
   </data>
   <data name="MainPage_ServerStatusHint.Text" xml:space="preserve">
     <value>Status:</value>

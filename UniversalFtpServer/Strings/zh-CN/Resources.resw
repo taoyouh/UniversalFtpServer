@@ -135,6 +135,9 @@
   <data name="MainPage_AllowAnonymousBox.Content" xml:space="preserve">
     <value>允许匿名登录</value>
   </data>
+  <data name="MainPage_ChangeFolderButton.Content" xml:space="preserve">
+    <value>更改</value>
+  </data>
   <data name="MainPage_ImportantNotes_Para1.Text" xml:space="preserve">
     <value>重要提示：</value>
   </data>
@@ -178,6 +181,9 @@
   </data>
   <data name="MainPage_PortIncorrect" xml:space="preserve">
     <value>你输入的端口号不是一个合法的数字。</value>
+  </data>
+  <data name="MainPage_RootFolderHint.Text" xml:space="preserve">
+    <value>根目录：</value>
   </data>
   <data name="MainPage_ServerStatusHint.Text" xml:space="preserve">
     <value>状态：</value>
