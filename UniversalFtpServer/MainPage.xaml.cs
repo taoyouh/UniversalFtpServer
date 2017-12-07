@@ -11,6 +11,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
+using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -44,6 +45,7 @@ namespace UniversalFtpServer
         const string UserNameSetting = "UserName";
         const string PasswordSetting = "Password";
         const string SettingVersionSetting = "SettingVersion";
+        const string RootFolderSetting = "RootFolder";
 
         FtpServer server4;
         Task server4Run;
@@ -52,16 +54,30 @@ namespace UniversalFtpServer
         CancellationTokenSource cts;
         string rootPath;
         StorageFolder rootFolder;
+        readonly object rootFolderSyncRoot = new object();
 
         public MainPage()
         {
             this.InitializeComponent();
             Loaded += MainPage_Loaded;
             Unloaded += MainPage_Unloaded;
-            rootFolder = ApplicationData.Current.LocalFolder;
-            rootPath = rootFolder.Path;
 
             var settings = ApplicationData.Current.LocalSettings;
+            if (settings.Values[RootFolderSetting] is string token)
+            {
+                var result = LoadRootFolderAsync(token);
+            }
+            else
+            {
+                var folder = ApplicationData.Current.LocalFolder;
+
+                lock (rootFolderSyncRoot)
+                {
+                    rootFolder = folder;
+                    rootPath = folder.Path;
+                    rootFolderBlock.Text = rootPath;
+                }
+            }
             if (!(settings.Values[SettingVersionSetting] is int version && version == 1))
             {
                 settings.Values[SettingVersionSetting] = 1;
@@ -153,12 +169,12 @@ namespace UniversalFtpServer
                 {
                     server4 = new FtpServer(
                         ep4,
-                        new Zhaobang.FtpServer.File.SimpleFileProviderFactory(rootPath),
+                        new UwpFileProviderFactory(rootPath),
                         new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
                         new Zhaobang.FtpServer.Authenticate.SimpleAuthenticator(userName, password));
                     server6 = new FtpServer(
                         ep6,
-                        new Zhaobang.FtpServer.File.SimpleFileProviderFactory(rootPath),
+                        new UwpFileProviderFactory(rootPath),
                         new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
                         new Zhaobang.FtpServer.Authenticate.SimpleAuthenticator(userName, password));
                 }
@@ -229,6 +245,41 @@ namespace UniversalFtpServer
         private void allowAnonymousBox_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, nameof(notAnonymousState), true);
+        }
+
+        private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            FolderPicker picker = new FolderPicker();
+            picker.FileTypeFilter.Add("*");
+            var folder = await picker.PickSingleFolderAsync();
+            if (folder == null)
+                return;
+            string token = StorageApplicationPermissions.MostRecentlyUsedList.Add(folder);
+            lock (rootFolderSyncRoot)
+            {
+                rootFolder = folder;
+                rootPath = folder.Path;
+                rootFolderBlock.Text = rootPath;
+                ApplicationData.Current.LocalSettings.Values[RootFolderSetting] = token;
+            }
+        }
+
+        private async Task LoadRootFolderAsync(string token)
+        {
+            var folder = ApplicationData.Current.LocalFolder;
+
+            try
+            {
+                folder = await StorageApplicationPermissions.MostRecentlyUsedList.GetFolderAsync(token);
+            }
+            catch { }
+
+            lock (rootFolderSyncRoot)
+            {
+                rootFolder = folder;
+                rootPath = folder.Path;
+                rootFolderBlock.Text = rootPath;
+            }
         }
     }
 }

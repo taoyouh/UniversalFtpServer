@@ -21,7 +21,7 @@
                         <Setter Target="statusPanel.(RelativePanel.AlignTopWithPanel)" Value="True"/>
                         <Setter Target="statusPanel.(RelativePanel.Below)" Value=""/>
                         <Setter Target="statusPanel.(RelativePanel.RightOf)" Value="controlPanel"/>
-                        <Setter Target="controlPanel.(FrameworkElement.Width)" Value="200"/>
+                        <Setter Target="controlPanel.(FrameworkElement.Width)" Value="250"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="narrowState">
@@ -58,7 +58,10 @@
             <RelativePanel x:Name="rootPanel">
                 <StackPanel x:Name="controlPanel" Orientation="Vertical" Margin="12" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"
                             RelativePanel.AlignTopWithPanel="True">
+                    <TextBlock x:Uid="MainPage_RootFolderHint" Text="Root folder:-" FontWeight="Bold" Margin="4,4,4,0" />
+                    <TextBlock x:Name="rootFolderBlock" Margin="4,0,4,4" TextWrapping="Wrap"/>
                     <Button x:Uid="MainPage_LaunchFolderButton" x:Name="launchFolderButton" Margin="4" Content="Open folder-" Click="LaunchFolderButton_Click"/>
+                    <Button x:Uid="MainPage_ChangeFolderButton" x:Name="pickFolderButton" Margin="4" Content="Change folder-" Click="PickFolderButton_Click"/>
                     <TextBox x:Uid="MainPage_PortBox" x:Name="portBox" Header="Port-" Margin="4" Text="21"/>
                     <CheckBox x:Uid="MainPage_AllowAnonymousBox" x:Name="allowAnonymousBox" Margin="4" Content="Allow anonymous-" Checked="allowAnonymousBox_Checked" Unchecked="allowAnonymousBox_Unchecked"/>
                     <TextBox x:Uid="MainPage_UserNameBox" x:Name="userNameBox" Header="User Name-" Margin="4" Text="ftp"/>
