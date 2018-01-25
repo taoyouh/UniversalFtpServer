@@ -271,10 +271,10 @@
 
         "allowTargetFutureDeviceFamilies": {
             "Xbox": false,
-            "Team": false,    // Surface Hub
-            "Holographic": false,
+            "Team": true,    // Surface Hub
+            "Holographic": true,
             "Desktop": true,
-            "Mobile": false
+            "Mobile": true
         },
 
         // True, Let Microsoft decide whether to make this app available to any future device families.
