@@ -182,6 +182,9 @@
   <data name="MainPage_PortIncorrect" xml:space="preserve">
     <value>你输入的端口号不是一个合法的数字。</value>
   </data>
+  <data name="MainPage_RateButton.Content" xml:space="preserve">
+    <value>打分并评价…</value>
+  </data>
   <data name="MainPage_RootFolderHint.Text" xml:space="preserve">
     <value>根目录：</value>
   </data>
@@ -193,6 +196,9 @@
   </data>
   <data name="MainPage_StopButton.Content" xml:space="preserve">
     <value>停止服务器</value>
+  </data>
+  <data name="MainPage_TitleBlock.Text" xml:space="preserve">
+    <value>FTP服务器</value>
   </data>
   <data name="MainPage_UserNameBox.Header" xml:space="preserve">
     <value>用户名</value>

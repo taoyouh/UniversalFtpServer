@@ -47,6 +47,8 @@ namespace UniversalFtpServer
         const string SettingVersionSetting = "SettingVersion";
         const string RootFolderSetting = "RootFolder";
 
+        const string HasRatedSetting = "HasRated";
+
         FtpServer server4;
         Task server4Run;
         FtpServer server6;
@@ -292,6 +294,12 @@ namespace UniversalFtpServer
                 rootPath = folder.Path;
                 rootFolderBlock.Text = rootPath;
             }
+        }
+
+        private void RateButton_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationData.Current.LocalSettings.Values[HasRatedSetting] = true;
+            var result = Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?ProductId=9NQKQ104HB9R"));
         }
     }
 }
