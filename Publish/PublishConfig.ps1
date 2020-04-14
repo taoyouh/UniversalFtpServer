@@ -1,5 +1,4 @@
 $env:PUBLISH_TENANTID = "05fd4458-757f-4d64-8c5d-ca5617532083"
-$env:PUBLISH_CLINETID = "07e52762-7779-4184-8d85-b2f8ebd64d5d"
-# $env:PUBLISH_CLIENTSECRET = $env:clientSecret
+$env:PUBLISH_CLINETID = "0ba8b649-d5db-4ba5-9bf9-99ec0baec4bc"
 
 $env:PUBLISH_APPID = "9nqkq104hb9r"

@@ -3,11 +3,10 @@ branches:
   only:
   - master
   - dev
-skip_branch_with_pr: true
 image: Visual Studio 2017
 environment:
   PUBLISH_CLIENTSECRET:
-    secure: u2MqrnmS+4jSw1IQjBViTCmrVJ5OUo8bvswGz3HcF4L+qX2ZPYNrPRSKfOpWMUvr
+    secure: YzA3nnvFGBT1Kp0tjE5xbQGv8AC/YuwRkiD9NgJp8ytUf+TNEtwYf369h3tudhc8
 build_script:
 - ps: >-
     .\Build\BuildConfig.ps1
