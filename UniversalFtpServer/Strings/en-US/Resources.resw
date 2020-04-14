@@ -138,6 +138,9 @@
   <data name="MainPage_ChangeFolderButton.Content" xml:space="preserve">
     <value>Change folder</value>
   </data>
+  <data name="MainPage_CommandInvoked" xml:space="preserve">
+    <value>{0} invoked by {1}</value>
+  </data>
   <data name="MainPage_ImportantNotes_Para1.Text" xml:space="preserve">
     <value>Important notes:</value>
   </data>
@@ -173,6 +176,9 @@
   <data name="MainPage_LaunchFolderButton.Content" xml:space="preserve">
     <value>Open folder</value>
   </data>
+  <data name="MainPage_LogsHint.Text" xml:space="preserve">
+    <value>Logs:</value>
+  </data>
   <data name="MainPage_PasswordBox.Header" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -180,10 +186,13 @@
     <value>Port</value>
   </data>
   <data name="MainPage_PortIncorrect" xml:space="preserve">
-    <value>The port number you entered is not legal number</value>
+    <value>The port number you entered is not legal number.</value>
   </data>
   <data name="MainPage_RateButton.Content" xml:space="preserve">
     <value>Rate and review...</value>
+  </data>
+  <data name="MainPage_ReplySent" xml:space="preserve">
+    <value>{0} replied to {1}</value>
   </data>
   <data name="MainPage_RootFolderHint.Text" xml:space="preserve">
     <value>Root folder:</value>
@@ -199,6 +208,12 @@
   </data>
   <data name="MainPage_TitleBlock.Text" xml:space="preserve">
     <value>FTP Server</value>
+  </data>
+  <data name="MainPage_UserConnected" xml:space="preserve">
+    <value>{0} connected</value>
+  </data>
+  <data name="MainPage_UserDisconnected" xml:space="preserve">
+    <value>{0} disconnected</value>
   </data>
   <data name="MainPage_UserNameBox.Header" xml:space="preserve">
     <value>User name</value>

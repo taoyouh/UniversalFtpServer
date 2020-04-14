@@ -16,7 +16,7 @@
   <Description _locID="App_Description">
     <!-- _locComment_text="{MaxLength=10000} App Description" -->通过本应用，你能够搭建一个简易的FTP服务器。</Description>
   <ReleaseNotes _locID="App_ReleaseNotes">
-    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->支持将任意文件夹作为FTP根目录
+    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.4.0.0：支持显示用户连接日志
   </ReleaseNotes>
   <ScreenshotCaptions>
     <!-- Valid length: 200 character limit, up to 9 elements per platform -->
@@ -32,6 +32,7 @@
     <AppFeature _locID="App_feature3"><!-- _locComment_text="{MaxLength=200} App Feature 3" -->支持IPv4和IPv6</AppFeature>
     <AppFeature _locID="App_feature4"><!-- _locComment_text="{MaxLength=200} App Feature 4" -->将任意文件夹作为FTP根目录</AppFeature>
     <AppFeature _locID="App_feature5"><!-- _locComment_text="{MaxLength=200} App Feature 5" -->最小化后可继续运行（可能因电源设置不同而不同）</AppFeature>
+    <AppFeature _locID="App_feature6"><!-- _locComment_text="{MaxLength=200} App Feature 6" -->显示用户连接日志</AppFeature>
   </AppFeatures>
   <RecommendedHardware>
     <!-- Valid length: 200 character limit, up to 11 elements -->
