@@ -49,7 +49,8 @@
                     <TextBlock x:Uid="MainPage_AddressesHint" Margin="6,12,6,4" FontWeight="Bold"
                                Text="Addresses of this computer:-" />
                     <TextBlock x:Name="addressesBlock" Margin="18,0,6,0" IsTextSelectionEnabled="True" />
-                    <ListView x:Name="connectedUsersList" />
+                    <TextBlock x:Uid="MainPage_LogsHint" Margin="6,12,6,4" FontWeight="Bold" Text="Logs:-"/>
+                    <TextBlock x:Name="logsBlock" Margin="18,0,6,0" IsTextSelectionEnabled="True" />
                 </StackPanel>
             </RelativePanel>
         </ScrollViewer>

@@ -38,6 +38,10 @@ namespace UniversalFtpServer
         const string Ipv6Error = "MainPage_Ipv6Error";
         const string Ipv4Stopped = "MainPage_Ipv4Stopped";
         const string Ipv6Stopped = "MainPage_Ipv6Stopped";
+        const string UserConnected = "MainPage_UserConnected";
+        const string UserDisconnected = "MainPage_UserDisconnected";
+        const string CommandInvoked = "MainPage_CommandInvoked";
+        const string ReplySent = "MainPage_ReplySent";
         const string Ok = "Dialog_Ok";
         const string PortIncorrect = "MainPage_PortIncorrect";
         const string PortNumberSetting = "PortNumber";
@@ -188,6 +192,15 @@ namespace UniversalFtpServer
                         new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
                         new Zhaobang.FtpServer.Authenticate.SimpleAuthenticator(userName, password));
                 }
+
+                server4.Tracer.UserConnected += Tracer_UserConnected;
+                server6.Tracer.UserConnected += Tracer_UserConnected;
+                server4.Tracer.CommandInvoked += Tracer_CommandInvoked;
+                server6.Tracer.CommandInvoked += Tracer_CommandInvoked;
+                server4.Tracer.ReplyInvoked += Tracer_ReplyInvoked;
+                server6.Tracer.ReplyInvoked += Tracer_ReplyInvoked;
+                server4.Tracer.UserDisconnected += Tracer_UserDisconnected;
+                server6.Tracer.UserDisconnected += Tracer_UserDisconnected;
             });
 
             var server4Deferral = ExtendedExecutionHelper.GetDeferral();
@@ -210,6 +223,56 @@ namespace UniversalFtpServer
                         statusBlock6.Text = loader.GetString(Ipv6Stopped);
                     server6Deferral.Complete();
                 }));
+        }
+
+        /// <summary>
+        /// A command was invoked by the FTP client.
+        /// This method may be called in different thread.
+        /// </summary>
+        /// <param name="command">The command that was invoked by the FTP client.</param>
+        /// <param name="remoteAddress">The remote address that invoked the command.</param>
+        private async void Tracer_CommandInvoked(string command, IPEndPoint remoteAddress)
+        {
+            await Dispatcher.RunIdleAsync(args =>
+            {
+                var loader = new ResourceLoader();
+                PrintLog(string.Format(loader.GetString(CommandInvoked), command, remoteAddress));
+            });
+        }
+
+        /// <summary>
+        /// An FTP client connected to the server.
+        /// </summary>
+        /// <param name="remoteAddress">The remote address of the client.</param>
+        private async void Tracer_UserConnected(IPEndPoint remoteAddress)
+        {
+            await Dispatcher.RunIdleAsync(args =>
+            {
+                var loader = new ResourceLoader();
+                PrintLog(string.Format(loader.GetString(UserConnected), remoteAddress));
+            });
+        }
+
+        private async void Tracer_ReplyInvoked(string replyCode, IPEndPoint remoteAddress)
+        {
+            await Dispatcher.RunIdleAsync(args =>
+            {
+                var loader = new ResourceLoader();
+                PrintLog(string.Format(loader.GetString(ReplySent), replyCode, remoteAddress));
+            });
+        }
+
+        /// <summary>
+        /// An FTP client disconnected from the server.
+        /// </summary>
+        /// <param name="remoteAddress">The remote address of the client.</param>
+        private async void Tracer_UserDisconnected(IPEndPoint remoteAddress)
+        {
+            await Dispatcher.RunIdleAsync(args =>
+            {
+                var loader = new ResourceLoader();
+                PrintLog(string.Format(loader.GetString(UserDisconnected), remoteAddress));
+            });
         }
 
         private async void NetworkInformation_NetworkStatusChanged(object sender)
@@ -300,6 +363,15 @@ namespace UniversalFtpServer
         {
             ApplicationData.Current.LocalSettings.Values[HasRatedSetting] = true;
             var result = Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?ProductId=9NQKQ104HB9R"));
+        }
+
+        private void PrintLog(string log)
+        {
+            logsBlock.Text = log + "\n" + logsBlock.Text;
+            if (logsBlock.Text.Length > 1000)
+            {
+                logsBlock.Text = logsBlock.Text.Substring(0, 1000);
+            }
         }
     }
 }
