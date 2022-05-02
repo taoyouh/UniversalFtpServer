@@ -2,6 +2,7 @@
 <StoreAssociation xmlns="http://schemas.microsoft.com/appx/2010/storeassociation">
   <Publisher>CN=584E9342-CAA7-4820-8744-3B371B8C8C66</Publisher>
   <PublisherDisplayName>兆邦中国(Zhaobang China)</PublisherDisplayName>
+  <DeveloperAccountType>MSA</DeveloperAccountType>
   <GeneratePackageHash>http://www.w3.org/2001/04/xmlenc#sha256</GeneratePackageHash>
   <SupportedLocales>
     <Language Code="af" InMinimumRequirementSet="true" />
@@ -240,6 +241,8 @@
     <Language Code="no-no" InMinimumRequirementSet="true" />
     <Language Code="nso" InMinimumRequirementSet="true" />
     <Language Code="nso-za" InMinimumRequirementSet="true" />
+    <Language Code="om" InMinimumRequirementSet="false" />
+    <Language Code="om-et" InMinimumRequirementSet="false" />
     <Language Code="or" InMinimumRequirementSet="true" />
     <Language Code="or-in" InMinimumRequirementSet="true" />
     <Language Code="pa" InMinimumRequirementSet="true" />
@@ -365,22 +368,75 @@
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>8966ZhaobangChina.AI</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.DBBrowserforSQLite</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.DirectFTP</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.GPX</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.LiveTVforSJTU</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.362396DF2A827</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.NuGet</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.RelationshipEditor</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.54556DB05D92B</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.281636678AAC8</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.2337348723AC2</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.25650B271176</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.2207064921A9A</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.58591251FE075</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.4193799A1ED0F</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.4</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.6472952EB95CF</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.39214D739E31D</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.1814967A1188D</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.631430E59975B</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.2017</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.6320116653AAB</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.29742AAE14E4A</MainPackageIdentityName>
+    <MainPackageIdentityName>8966ZhaobangChina.20387AD41E46</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.61867F1599059</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.186088FBDD1A3</MainPackageIdentityName>
-    <MainPackageIdentityName>8966ZhaobangChina.2</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.9606FD8BBBF3</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NQKQ104HB9R" />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NQKQ104HB9R">
+    <BundleInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>X86</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.4.1.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>X64</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.4.1.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Arm</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.4.1.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.4.1.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.4.1.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.4.1.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.4.1.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.4.1.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+    </BundleInfo>
+  </PackageInfoList>
 </StoreAssociation>

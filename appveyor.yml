@@ -3,7 +3,7 @@ branches:
   only:
   - master
   - dev
-image: Visual Studio 2017
+image: Visual Studio 2022
 environment:
   PUBLISH_CLIENTSECRET:
     secure: YzA3nnvFGBT1Kp0tjE5xbQGv8AC/YuwRkiD9NgJp8ytUf+TNEtwYf369h3tudhc8
