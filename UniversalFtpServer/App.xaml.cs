@@ -44,20 +44,15 @@ namespace UniversalFtpServer
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            Window = new Window();
-            Window.Activate();
-
-            Frame rootFrame = new Frame();
-            rootFrame.NavigationFailed += OnNavigationFailed;
-            rootFrame.Navigate(typeof(MainPage), args.Arguments);
+            var window = new MainWindow();
 
             if (args.UWPLaunchActivatedEventArgs.PreviousExecutionState == ApplicationExecutionState.Terminated)
             {
                 //TODO: 从之前挂起的应用程序加载状态
             }
 
-            // 将框架放在当前窗口中
-            Window.Content = rootFrame;
+            Window = window;
+            Window.Activate();
         }
 
         /// <summary>

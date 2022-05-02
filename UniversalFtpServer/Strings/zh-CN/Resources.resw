@@ -218,4 +218,7 @@
   <data name="MainPage_UserDisconnected" xml:space="preserve">
     <value>{0}已断开</value>
   </data>
+  <data name="MainWindow_TitleBlock.Text" xml:space="preserve">
+    <value>Universal FTP Server</value>
+  </data>
 </root>

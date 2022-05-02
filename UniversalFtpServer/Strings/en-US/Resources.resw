@@ -218,4 +218,7 @@
   <data name="MainPage_UserNameBox.Header" xml:space="preserve">
     <value>User name</value>
   </data>
+  <data name="MainWindow_TitleBlock.Text" xml:space="preserve">
+    <value>Universal FTP Server</value>
+  </data>
 </root>
