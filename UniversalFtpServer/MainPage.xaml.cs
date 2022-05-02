@@ -51,6 +51,7 @@ namespace UniversalFtpServer
         const string PasswordSetting = "Password";
         const string SettingVersionSetting = "SettingVersion";
         const string RootFolderSetting = "RootFolder";
+        const string PortOutOfRange = "MainPage_PortOutOfRange";
 
         const string HasRatedSetting = "HasRated";
 
@@ -115,6 +116,12 @@ namespace UniversalFtpServer
             if (!int.TryParse(portBox.Text, out int port))
             {
                 NotifyUser(loader.GetString(PortIncorrect));
+                return;
+            }
+
+            if (port < IPEndPoint.MinPort || port > IPEndPoint.MaxPort)
+            {
+                NotifyUser(string.Format(loader.GetString(PortOutOfRange), IPEndPoint.MinPort, IPEndPoint.MaxPort));
                 return;
             }
 
@@ -260,7 +267,8 @@ namespace UniversalFtpServer
             ContentDialog dialog = new ContentDialog
             {
                 Content = v,
-                CloseButtonText = loader.GetString(Ok)
+                CloseButtonText = loader.GetString(Ok),
+                XamlRoot = (Application.Current as App).Window.Content.XamlRoot,
             };
             var result = dialog.ShowAsync();
         }

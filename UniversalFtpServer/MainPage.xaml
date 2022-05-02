@@ -38,10 +38,10 @@
                     <Button x:Uid="MainPage_RateButton" Margin="6" Click="RateButton_Click" />
                     <TextBlock x:Uid="MainPage_ImportantNotes_Para1" Margin="6,6,6,4" FontWeight="Bold"
                                TextWrapping="WrapWholeWords">
-                        Important notes:
+                        MainPage_ImportantNotes_Para1-
                     </TextBlock>
                     <TextBlock x:Uid="MainPage_ImportantNotes_Para3" Margin="18,0,6,0" TextWrapping="WrapWholeWords">
-                        You can only access the FTP server from another device.
+                        MainPage_ImportantNotes_Para3-
                     </TextBlock>
                     <TextBlock x:Uid="MainPage_ServerStatusHint" Margin="6,12,6,4" FontWeight="Bold" Text="Status:-" />
                     <TextBlock x:Name="statusBlock4" Margin="18,0,6,0" />
