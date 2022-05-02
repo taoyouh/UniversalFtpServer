@@ -57,7 +57,7 @@ namespace UniversalFtpServer
             string fullPath = GetLocalPath(path);
             StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(fullPath);
             List<FileSystemEntry> result = new List<FileSystemEntry>();
-            foreach(var item in await folder.GetItemsAsync())
+            foreach (var item in await folder.GetItemsAsync())
             {
                 var properties = await item.GetBasicPropertiesAsync();
                 FileSystemEntry entry = new FileSystemEntry()
@@ -126,7 +126,7 @@ namespace UniversalFtpServer
                 throw new FileNoAccessException("Can't find the item to rename");
             }
 
-            rename:
+        rename:
             if (Path.GetDirectoryName(fromFullPath) != Path.GetDirectoryName(toFullPath))
             {
                 string toFullPathParent = Path.GetDirectoryName(toFullPath);

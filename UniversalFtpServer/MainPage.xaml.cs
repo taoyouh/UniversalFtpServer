@@ -6,7 +6,7 @@ using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
+using Microsoft.Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Connectivity;
@@ -14,14 +14,15 @@ using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using Zhaobang.FtpServer;
+using System.Diagnostics;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -50,6 +51,7 @@ namespace UniversalFtpServer
         const string PasswordSetting = "Password";
         const string SettingVersionSetting = "SettingVersion";
         const string RootFolderSetting = "RootFolder";
+        const string PortOutOfRange = "MainPage_PortOutOfRange";
 
         const string HasRatedSetting = "HasRated";
 
@@ -65,8 +67,6 @@ namespace UniversalFtpServer
         public MainPage()
         {
             this.InitializeComponent();
-            Loaded += MainPage_Loaded;
-            Unloaded += MainPage_Unloaded;
 
             var settings = ApplicationData.Current.LocalSettings;
             if (settings.Values[RootFolderSetting] is string token)
@@ -109,32 +109,6 @@ namespace UniversalFtpServer
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
         }
 
-        private void MainPage_Unloaded(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Suspending -= App_Suspending;
-        }
-
-        private void App_Suspending(object sender, Windows.ApplicationModel.SuspendingEventArgs e)
-        {
-            var settings = ApplicationData.Current.LocalSettings;
-
-            if (int.TryParse(portBox.Text, out int port))
-                settings.Values[PortNumberSetting] = port;
-
-            var allowAnonymous = allowAnonymousBox.IsChecked == true;
-            string userName = userNameBox.Text;
-            string password = passwordBox.Text;
-
-            settings.Values[AllowAnonymousSetting] = allowAnonymous;
-            settings.Values[UserNameSetting] = userName;
-            settings.Values[PasswordSetting] = password;
-        }
-
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Suspending += App_Suspending;
-        }
-
         private async void StartButton_Click(object sender, RoutedEventArgs e)
         {
             var loader = new ResourceLoader();
@@ -142,6 +116,12 @@ namespace UniversalFtpServer
             if (!int.TryParse(portBox.Text, out int port))
             {
                 NotifyUser(loader.GetString(PortIncorrect));
+                return;
+            }
+
+            if (port < IPEndPoint.MinPort || port > IPEndPoint.MaxPort)
+            {
+                NotifyUser(string.Format(loader.GetString(PortOutOfRange), IPEndPoint.MinPort, IPEndPoint.MaxPort));
                 return;
             }
 
@@ -203,26 +183,22 @@ namespace UniversalFtpServer
                 server6.Tracer.UserDisconnected += Tracer_UserDisconnected;
             });
 
-            var server4Deferral = ExtendedExecutionHelper.GetDeferral();
-            server4Run = server4.RunAsync(cts.Token).ContinueWith(async t =>
-                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            server4Run = server4.RunAsync(cts.Token).ContinueWith(t =>
+                Debug.Assert(DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
                 {
                     if (t.IsFaulted)
                         statusBlock4.Text = string.Format(loader.GetString(Ipv4Error), t.Exception);
                     else
                         statusBlock4.Text = loader.GetString(Ipv4Stopped);
-                    server4Deferral.Complete();
-                }));
-            var server6Deferral = ExtendedExecutionHelper.GetDeferral();
-            server6Run = server6.RunAsync(cts.Token).ContinueWith(async t =>
-                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                })));
+            server6Run = server6.RunAsync(cts.Token).ContinueWith(t =>
+                Debug.Assert(DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
                 {
                     if (t.IsFaulted)
                         statusBlock6.Text = string.Format(loader.GetString(Ipv6Error), t.Exception);
                     else
                         statusBlock6.Text = loader.GetString(Ipv6Stopped);
-                    server6Deferral.Complete();
-                }));
+                })));
         }
 
         /// <summary>
@@ -231,58 +207,58 @@ namespace UniversalFtpServer
         /// </summary>
         /// <param name="command">The command that was invoked by the FTP client.</param>
         /// <param name="remoteAddress">The remote address that invoked the command.</param>
-        private async void Tracer_CommandInvoked(string command, IPEndPoint remoteAddress)
+        private void Tracer_CommandInvoked(string command, IPEndPoint remoteAddress)
         {
-            await Dispatcher.RunIdleAsync(args =>
+            Debug.Assert(DispatcherQueue.TryEnqueue(() =>
             {
                 var loader = new ResourceLoader();
                 PrintLog(string.Format(loader.GetString(CommandInvoked), command, remoteAddress));
-            });
+            }));
         }
 
         /// <summary>
         /// An FTP client connected to the server.
         /// </summary>
         /// <param name="remoteAddress">The remote address of the client.</param>
-        private async void Tracer_UserConnected(IPEndPoint remoteAddress)
+        private void Tracer_UserConnected(IPEndPoint remoteAddress)
         {
-            await Dispatcher.RunIdleAsync(args =>
+            Debug.Assert(DispatcherQueue.TryEnqueue(() =>
             {
                 var loader = new ResourceLoader();
                 PrintLog(string.Format(loader.GetString(UserConnected), remoteAddress));
-            });
+            }));
         }
 
-        private async void Tracer_ReplyInvoked(string replyCode, IPEndPoint remoteAddress)
+        private void Tracer_ReplyInvoked(string replyCode, IPEndPoint remoteAddress)
         {
-            await Dispatcher.RunIdleAsync(args =>
+            Debug.Assert(DispatcherQueue.TryEnqueue(() =>
             {
                 var loader = new ResourceLoader();
                 PrintLog(string.Format(loader.GetString(ReplySent), replyCode, remoteAddress));
-            });
+            }));
         }
 
         /// <summary>
         /// An FTP client disconnected from the server.
         /// </summary>
         /// <param name="remoteAddress">The remote address of the client.</param>
-        private async void Tracer_UserDisconnected(IPEndPoint remoteAddress)
+        private void Tracer_UserDisconnected(IPEndPoint remoteAddress)
         {
-            await Dispatcher.RunIdleAsync(args =>
+            Debug.Assert(DispatcherQueue.TryEnqueue(() =>
             {
                 var loader = new ResourceLoader();
                 PrintLog(string.Format(loader.GetString(UserDisconnected), remoteAddress));
-            });
+            }));
         }
 
-        private async void NetworkInformation_NetworkStatusChanged(object sender)
+        private void NetworkInformation_NetworkStatusChanged(object sender)
         {
             var addresses = from host in NetworkInformation.GetHostNames()
                             select host.DisplayName;
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            Debug.Assert(DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
             {
                 addressesBlock.Text = string.Join('\n', addresses);
-            });
+            }));
         }
 
         private void NotifyUser(string v)
@@ -291,7 +267,8 @@ namespace UniversalFtpServer
             ContentDialog dialog = new ContentDialog
             {
                 Content = v,
-                CloseButtonText = loader.GetString(Ok)
+                CloseButtonText = loader.GetString(Ok),
+                XamlRoot = (Application.Current as App).Window.Content.XamlRoot,
             };
             var result = dialog.ShowAsync();
         }
@@ -327,6 +304,8 @@ namespace UniversalFtpServer
         private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
         {
             FolderPicker picker = new FolderPicker();
+            var hWnd = (Application.Current as App).GetWindowHandle();
+            WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
             picker.FileTypeFilter.Add("*");
             var folder = await picker.PickSingleFolderAsync();
             if (folder == null)

@@ -1,1 +1,1 @@
-$env:BUILD_PROJECTFILE = "UniversalFtpServer\UniversalFtpServer.csproj"
+$env:BUILD_PROJECTFILE = "UniversalFtpServer (Package)\UniversalFtpServer (Package).wapproj"
