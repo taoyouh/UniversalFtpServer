@@ -6,7 +6,7 @@ branches:
 image: Visual Studio 2022
 environment:
   PUBLISH_CLIENTSECRET:
-    secure: YzA3nnvFGBT1Kp0tjE5xbQGv8AC/YuwRkiD9NgJp8ytUf+TNEtwYf369h3tudhc8
+    secure: Q0v+RZeL5HORLaCOBP0ImyA+xBRa8HLFixqd+I4MrV0MKwqae5f6W9CL4Liuh86i
 build_script:
 - ps: >-
     .\Build\BuildConfig.ps1
