@@ -35,7 +35,7 @@ Write-Host "Creating submission package:" -ForegroundColor Cyan
 New-SubmissionPackage -ConfigPath $configPath -PDPRootPath $pdpRootPath -ImagesRootPath $imageRootPath -OutPath $outPath -OutName $outName -AppxPath $appxuploads.FullName
 
 Write-Host "Submitting package to Dev Center" -ForegroundColor Cyan
-Update-ApplicationSubmission -AppId $appId -SubmissionDataPath ($outPath + $outName + ".json") -PackagePath ($outPath + $outName + ".zip") -Force -ReplacePackages -UpdateListings
+Update-ApplicationSubmission -AppId $appId -SubmissionDataPath ($outPath + $outName + ".json") -PackagePath ($outPath + $outName + ".zip") -Force -ReplacePackages -UpdateListings -TargetPublishMode Manual -AutoCommit
 
 Write-Host "Clearing Authentication" -ForegroundColor Cyan
 Clear-StoreBrokerAuthentication
