@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "UniversalFtpServer (Package)", "UniversalFtpServer (Package)\UniversalFtpServer (Package).wapproj", "{BB8E5562-08F5-48CE-85A6-D9C7EF448750}"
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "UniversalFtpServer.Package", "UniversalFtpServer.Package\UniversalFtpServer.Package.wapproj", "{BB8E5562-08F5-48CE-85A6-D9C7EF448750}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalFtpServer", "UniversalFtpServer\UniversalFtpServer.csproj", "{BF2FA8BD-56BC-4437-99C3-70C3B02F5D90}"
 EndProject
