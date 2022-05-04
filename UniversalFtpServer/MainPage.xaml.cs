@@ -22,7 +22,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Zhaobang.FtpServer;
-using System.Diagnostics;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -184,21 +183,21 @@ namespace UniversalFtpServer
             });
 
             server4Run = server4.RunAsync(cts.Token).ContinueWith(t =>
-                Debug.Assert(DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
+                DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
                 {
                     if (t.IsFaulted)
                         statusBlock4.Text = string.Format(loader.GetString(Ipv4Error), t.Exception);
                     else
                         statusBlock4.Text = loader.GetString(Ipv4Stopped);
-                })));
+                }));
             server6Run = server6.RunAsync(cts.Token).ContinueWith(t =>
-                Debug.Assert(DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
+                DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
                 {
                     if (t.IsFaulted)
                         statusBlock6.Text = string.Format(loader.GetString(Ipv6Error), t.Exception);
                     else
                         statusBlock6.Text = loader.GetString(Ipv6Stopped);
-                })));
+                }));
         }
 
         /// <summary>
@@ -209,11 +208,11 @@ namespace UniversalFtpServer
         /// <param name="remoteAddress">The remote address that invoked the command.</param>
         private void Tracer_CommandInvoked(string command, IPEndPoint remoteAddress)
         {
-            Debug.Assert(DispatcherQueue.TryEnqueue(() =>
+            DispatcherQueue.TryEnqueue(() =>
             {
                 var loader = new ResourceLoader();
                 PrintLog(string.Format(loader.GetString(CommandInvoked), command, remoteAddress));
-            }));
+            });
         }
 
         /// <summary>
@@ -222,20 +221,20 @@ namespace UniversalFtpServer
         /// <param name="remoteAddress">The remote address of the client.</param>
         private void Tracer_UserConnected(IPEndPoint remoteAddress)
         {
-            Debug.Assert(DispatcherQueue.TryEnqueue(() =>
+            DispatcherQueue.TryEnqueue(() =>
             {
                 var loader = new ResourceLoader();
                 PrintLog(string.Format(loader.GetString(UserConnected), remoteAddress));
-            }));
+            });
         }
 
         private void Tracer_ReplyInvoked(string replyCode, IPEndPoint remoteAddress)
         {
-            Debug.Assert(DispatcherQueue.TryEnqueue(() =>
+            DispatcherQueue.TryEnqueue(() =>
             {
                 var loader = new ResourceLoader();
                 PrintLog(string.Format(loader.GetString(ReplySent), replyCode, remoteAddress));
-            }));
+            });
         }
 
         /// <summary>
@@ -244,21 +243,21 @@ namespace UniversalFtpServer
         /// <param name="remoteAddress">The remote address of the client.</param>
         private void Tracer_UserDisconnected(IPEndPoint remoteAddress)
         {
-            Debug.Assert(DispatcherQueue.TryEnqueue(() =>
+            DispatcherQueue.TryEnqueue(() =>
             {
                 var loader = new ResourceLoader();
                 PrintLog(string.Format(loader.GetString(UserDisconnected), remoteAddress));
-            }));
+            });
         }
 
         private void NetworkInformation_NetworkStatusChanged(object sender)
         {
             var addresses = from host in NetworkInformation.GetHostNames()
                             select host.DisplayName;
-            Debug.Assert(DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
+            DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
             {
                 addressesBlock.Text = string.Join('\n', addresses);
-            }));
+            });
         }
 
         private void NotifyUser(string v)
