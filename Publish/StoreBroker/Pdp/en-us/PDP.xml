@@ -37,9 +37,10 @@
     <!-- _locComment_text="{MaxLength=255} App DevStudio" -->
   </DevStudio>
   <ReleaseNotes _locID="App_ReleaseNotes">
-    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.5.0.0: Update to WinUI 3. Allow FTP access from localhost.
-    1.4.1.0: Fix the bug that non-ASCII characters show as garbage message on Windows.
-    1.4.0.0: Supports showing user connection logs.
+    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.5.1.0: Fix the bug that logs and status updates are not shown.
+1.5.0.0: Update to WinUI 3. Allow FTP access from localhost.
+1.4.1.0: Fix the bug that non-ASCII characters show as garbage message on Windows.
+1.4.0.0: Supports showing user connection logs.
   </ReleaseNotes>
   <ScreenshotCaptions>
     <!-- Valid length: 200 character limit, up to 9 elements per platform -->
