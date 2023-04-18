@@ -37,11 +37,12 @@
     <!-- _locComment_text="{MaxLength=255} App DevStudio" -->
   </DevStudio>
   <ReleaseNotes _locID="App_ReleaseNotes">
-    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.5.2.0：优化系统任务视图外观
-1.5.1.0：修复日志和状态无法显示的问题。
-1.5.0.0：更新到WinUI 3。支持从本机访问FTP服务器。
-1.4.1.0：修复非ASCII字符在Windows上显示为乱码的问题。
-1.4.0.0：支持显示用户连接日志。
+    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.6.0：更新隐私政策，优化兼容性
+1.5.2：优化系统任务视图外观
+1.5.1：修复日志和状态无法显示的问题。
+1.5.0：更新到WinUI 3。支持从本机访问FTP服务器。
+1.4.1：修复非ASCII字符在Windows上显示为乱码的问题。
+1.4.0：支持显示用户连接日志。
   </ReleaseNotes>
   <ScreenshotCaptions>
     <!-- Valid length: 200 character limit, up to 9 elements per platform -->
@@ -80,13 +81,13 @@
   <AdditionalLicenseTerms _locID="App_AdditionalLicenseTerms">
     <!-- _locComment_text="{MaxLength=10000} Additional License Terms" -->
   </AdditionalLicenseTerms>
-  <WebsiteURL _locID="App_WebsiteURL">
+  <WebsiteURL _locID="App_WebsiteURL">https://www.taoyouh.cn/apps/universal-ftp-server
     <!-- _locComment_text="{MaxLength=2048} WebsiteURL" -->
   </WebsiteURL>
   <SupportContactInfo _locID="App_SupportContactInfo">
-    <!-- _locComment_text="{MaxLength=2048} Support Contact Info" -->contact@taoyouh.cn
+    <!-- _locComment_text="{MaxLength=2048} Support Contact Info" -->https://www.taoyouh.cn/apps/universal-ftp-server
   </SupportContactInfo>
-  <PrivacyPolicyURL _locID="App_PrivacyURL">https://github.com/taoyouh/UniversalFtpServer/blob/master/PrivacyPolicy/PrivacyPolicy-zh-cn.md
+  <PrivacyPolicyURL _locID="App_PrivacyURL">https://www.taoyouh.cn/apps/universal-ftp-server/privacy-policy
     <!-- _locComment_text="{MaxLength=2048} Privacy Policy URL" -->
   </PrivacyPolicyURL>
 </ProductDescription>
