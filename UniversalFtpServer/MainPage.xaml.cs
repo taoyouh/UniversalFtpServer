@@ -44,15 +44,11 @@ namespace UniversalFtpServer
         const string ReplySent = "MainPage_ReplySent";
         const string Ok = "Dialog_Ok";
         const string PortIncorrect = "MainPage_PortIncorrect";
-        const string PortNumberSetting = "PortNumber";
-        const string AllowAnonymousSetting = "AllowAnonymous";
-        const string UserNameSetting = "UserName";
-        const string PasswordSetting = "Password";
-        const string SettingVersionSetting = "SettingVersion";
-        const string RootFolderSetting = "RootFolder";
         const string PortOutOfRange = "MainPage_PortOutOfRange";
 
         const string HasRatedSetting = "HasRated";
+
+        private readonly Settings _settings = new Settings();
 
         FtpServer server4;
         Task server4Run;
@@ -67,8 +63,7 @@ namespace UniversalFtpServer
         {
             this.InitializeComponent();
 
-            var settings = ApplicationData.Current.LocalSettings;
-            if (settings.Values[RootFolderSetting] is string token)
+            if (_settings.RootFolder is string token)
             {
                 var result = LoadRootFolderAsync(token);
             }
@@ -83,20 +78,16 @@ namespace UniversalFtpServer
                     rootFolderBlock.Text = rootPath;
                 }
             }
-            if (!(settings.Values[SettingVersionSetting] is int version && version == 1))
-            {
-                settings.Values[SettingVersionSetting] = 1;
-                settings.Values[PortNumberSetting] = 21;
-            }
-            if (settings.Values[PortNumberSetting] is int port)
+
+            if (_settings.PortNumber is int port)
                 portBox.Text = port.ToString();
-            if (settings.Values[AllowAnonymousSetting] is bool allowAnonymous)
+            if (_settings.AllowAnonymous is bool allowAnonymous)
                 allowAnonymousBox.IsChecked = allowAnonymous;
             else
                 allowAnonymousBox.IsChecked = true;
-            if (settings.Values[UserNameSetting] is string userName)
+            if (_settings.UserName is string userName)
                 userNameBox.Text = userName;
-            if (settings.Values[PasswordSetting] is string password)
+            if (_settings.Password is string password)
                 passwordBox.Text = password;
 
             var addresses = from host in NetworkInformation.GetHostNames()
@@ -128,11 +119,10 @@ namespace UniversalFtpServer
             string userName = userNameBox.Text;
             string password = passwordBox.Text;
 
-            var settings = ApplicationData.Current.LocalSettings;
-            settings.Values[PortNumberSetting] = port;
-            settings.Values[AllowAnonymousSetting] = allowAnonymous;
-            settings.Values[UserNameSetting] = userName;
-            settings.Values[PasswordSetting] = password;
+            _settings.PortNumber = port;
+            _settings.AllowAnonymous = allowAnonymous;
+            _settings.UserName = userName;
+            _settings.Password = password;
 
             var x = VisualStateManager.GoToState(this, nameof(runningState), true);
 
@@ -315,7 +305,7 @@ namespace UniversalFtpServer
                 rootFolder = folder;
                 rootPath = folder.Path;
                 rootFolderBlock.Text = rootPath;
-                ApplicationData.Current.LocalSettings.Values[RootFolderSetting] = token;
+                _settings.RootFolder = token;
             }
         }
 
@@ -350,6 +340,11 @@ namespace UniversalFtpServer
             {
                 logsBlock.Text = logsBlock.Text.Substring(0, 1000);
             }
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
         }
     }
 }
