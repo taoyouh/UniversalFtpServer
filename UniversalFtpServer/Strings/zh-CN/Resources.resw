@@ -216,4 +216,58 @@
     <value>端口号应处于{0}到{1}（包含两端）的范围内。</value>
     <comment>{0}: min port; {1}: max port</comment>
   </data>
+  <data name="AboutPage_AppNameBlock.Text" xml:space="preserve">
+    <value>关于Universal FTP Server</value>
+  </data>
+  <data name="AboutPage_VersionLabel.Text" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="MainPage_AboutButton.Content" xml:space="preserve">
+    <value>关于…</value>
+  </data>
+  <data name="AboutPage_DeveloperPageButton.Content" xml:space="preserve">
+    <value>获取帮助…</value>
+  </data>
+  <data name="AboutPage_DeveloperPageButton.NavigateUri" xml:space="preserve">
+    <value>https://www.taoyouh.cn/apps/universal-ftp-server</value>
+  </data>
+  <data name="AboutPage_PrivacyPolicyButton.Content" xml:space="preserve">
+    <value>隐私政策…</value>
+  </data>
+  <data name="PrivacyPolicyPage_TitleBlock.Text" xml:space="preserve">
+    <value>隐私政策</value>
+  </data>
+  <data name="PrivacyPolicyPage_AgreeButton.Content" xml:space="preserve">
+    <value>同意</value>
+  </data>
+  <data name="PrivacyPolicyPage_DisagreeButton.Content" xml:space="preserve">
+    <value>不同意并退出</value>
+  </data>
+  <data name="PrivacyPolicy_Part1.Text" xml:space="preserve">
+    <value>在您开始使用该应用前，请先了解该应用对您个人信息的收集和处理方式。</value>
+  </data>
+  <data name="PrivacyPolicy_Part2Title.Text" xml:space="preserve">
+    <value>本应用收集的个人信息及其用途</value>
+  </data>
+  <data name="PrivacyPolicy_Part2_1.Text" xml:space="preserve">
+    <value>您在应用中指定的“根目录”文件夹中的文件，用于按照您的设置启动FTP服务器供访问者访问。</value>
+  </data>
+  <data name="PrivacyPolicy_Part2_2.Text" xml:space="preserve">
+    <value>您的IP地址，用于在应用内显示您的FTP服务器的访问地址。</value>
+  </data>
+  <data name="PrivacyPolicy_Part2_3.Text" xml:space="preserve">
+    <value>您在本应用中输入的“用户名”和“密码”，用于在访问者访问您的FTP服务器时鉴定身份。</value>
+  </data>
+  <data name="PrivacyPolicy_Part3.Text" xml:space="preserve">
+    <value>以上所述个人信息的处理将在运行该应用的设备上进行，或通过网络按照您设置的用户名和密码从他处进行访问。</value>
+  </data>
+  <data name="PrivacyPolicy_Part3Title.Text" xml:space="preserve">
+    <value>以上个人信息的处理方式</value>
+  </data>
+  <data name="PrivacyPolicy_Part4.Text" xml:space="preserve">
+    <value>随着应用的更新，该隐私政策可能会修改，修改后的隐私政策会在启动时显示并征求您的同意。</value>
+  </data>
+  <data name="PrivacyPolicy_Part4Title.Text" xml:space="preserve">
+    <value>隐私政策的更新</value>
+  </data>
 </root>

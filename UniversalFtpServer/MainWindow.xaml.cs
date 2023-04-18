@@ -27,20 +27,23 @@ namespace UniversalFtpServer
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private readonly Settings _settings = new Settings();
+
         public MainWindow()
         {
             InitializeComponent();
 
+            AppWindow.SetIcon(Path.Combine(Package.Current.InstalledLocation.Path, "Icon.ico"));
+            Title = _appTitleTextBlock.Text;
             ExtendsContentIntoTitleBar = true;
             SetTitleBar(_appTitleBar);
 
-            IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            WindowId windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
-            var appWindow = AppWindow.GetFromWindowId(windowId);
-            appWindow.SetIcon(Path.Combine(Package.Current.InstalledLocation.Path, "Icon.ico"));
-            appWindow.Title = _appTitleTextBlock.Text;
+            PrivacyPolicyPage.CheckAgreedAndNavigate(_settings, _rootFrame, typeof(MainPage));
+        }
 
-            _rootFrame.Navigate(typeof(MainPage));
+        private void NavigationView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            _rootFrame.GoBack();
         }
     }
 }

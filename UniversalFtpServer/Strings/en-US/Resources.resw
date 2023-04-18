@@ -117,8 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutPage_AppNameBlock.Text" xml:space="preserve">
+    <value>About Universal FTP Server</value>
+  </data>
+  <data name="AboutPage_DeveloperPageButton.Content" xml:space="preserve">
+    <value>Get help...</value>
+  </data>
+  <data name="AboutPage_DeveloperPageButton.NavigateUri" xml:space="preserve">
+    <value>https://www.taoyouh.cn/apps-en/universal-ftp-server</value>
+  </data>
+  <data name="AboutPage_PrivacyPolicyButton.Content" xml:space="preserve">
+    <value>Privacy policy...</value>
+  </data>
+  <data name="AboutPage_VersionLabel.Text" xml:space="preserve">
+    <value>Version</value>
+  </data>
   <data name="Dialog_Ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="MainPage_AboutButton.Content" xml:space="preserve">
+    <value>About...</value>
   </data>
   <data name="MainPage_AddressesHint.Text" xml:space="preserve">
     <value>Addresses of this device:</value>
@@ -215,5 +233,41 @@
   </data>
   <data name="MainWindow_TitleBlock.Text" xml:space="preserve">
     <value>Universal FTP Server</value>
+  </data>
+  <data name="PrivacyPolicyPage_AgreeButton.Content" xml:space="preserve">
+    <value>Agree</value>
+  </data>
+  <data name="PrivacyPolicyPage_DisagreeButton.Content" xml:space="preserve">
+    <value>Disagree and quit</value>
+  </data>
+  <data name="PrivacyPolicyPage_TitleBlock.Text" xml:space="preserve">
+    <value>Privacy policy</value>
+  </data>
+  <data name="PrivacyPolicy_Part1.Text" xml:space="preserve">
+    <value>Before you start using this app, please understand how this app collects and use your personal information.</value>
+  </data>
+  <data name="PrivacyPolicy_Part2Title.Text" xml:space="preserve">
+    <value>Collected personal information and their usage</value>
+  </data>
+  <data name="PrivacyPolicy_Part2_1.Text" xml:space="preserve">
+    <value>The files inside the “root directory” you specified in the app, to allow clients to access through the FTP server you set up in this app.</value>
+  </data>
+  <data name="PrivacyPolicy_Part2_2.Text" xml:space="preserve">
+    <value>Your IP addresses, to show the URL of the FTP server you set up in this app.</value>
+  </data>
+  <data name="PrivacyPolicy_Part2_3.Text" xml:space="preserve">
+    <value>The “user name” and “password” you input into this app, for authenticating the clients of the FTP server you set up in this app.</value>
+  </data>
+  <data name="PrivacyPolicy_Part3.Text" xml:space="preserve">
+    <value>All the collected personal information will only be processed in this app on the device that runs this app, or accessed by a client from network with the credentials you set in this app.</value>
+  </data>
+  <data name="PrivacyPolicy_Part3Title.Text" xml:space="preserve">
+    <value>The process of the collected personal information</value>
+  </data>
+  <data name="PrivacyPolicy_Part4.Text" xml:space="preserve">
+    <value>This policy may update when the app updates. The updated version of this policy will be shown on startup of the app.</value>
+  </data>
+  <data name="PrivacyPolicy_Part4Title.Text" xml:space="preserve">
+    <value>Updates of this policy</value>
   </data>
 </root>
