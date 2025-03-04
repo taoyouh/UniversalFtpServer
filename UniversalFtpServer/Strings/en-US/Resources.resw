@@ -124,7 +124,7 @@
     <value>Get help...</value>
   </data>
   <data name="AboutPage_DeveloperPageButton.NavigateUri" xml:space="preserve">
-    <value>https://www.taoyouh.cn/apps-en/universal-ftp-server</value>
+    <value>https://www.taoyouh.cn/en/apps/universal-ftp-server/</value>
   </data>
   <data name="AboutPage_PrivacyPolicyButton.Content" xml:space="preserve">
     <value>Privacy policy...</value>

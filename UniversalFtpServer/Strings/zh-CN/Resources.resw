@@ -229,7 +229,7 @@
     <value>获取帮助…</value>
   </data>
   <data name="AboutPage_DeveloperPageButton.NavigateUri" xml:space="preserve">
-    <value>https://www.taoyouh.cn/apps/universal-ftp-server</value>
+    <value>https://www.taoyouh.cn/apps/universal-ftp-server/</value>
   </data>
   <data name="AboutPage_PrivacyPolicyButton.Content" xml:space="preserve">
     <value>隐私政策…</value>
