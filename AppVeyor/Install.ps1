@@ -1,0 +1,1 @@
+& (Join-Path $PSScriptRoot ../Scripts/Install-StoreBroker.ps1 -Resolve)

@@ -1,1 +1,0 @@
-$env:BUILD_PROJECTFILE = "UniversalFtpServer.Package\UniversalFtpServer.Package.wapproj"
