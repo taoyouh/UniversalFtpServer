@@ -82,9 +82,9 @@ namespace UniversalFtpServer
             if (_settings.PortNumber is int port)
                 portBox.Text = port.ToString();
             if (_settings.AllowAnonymous is bool allowAnonymous)
-                allowAnonymousBox.IsChecked = allowAnonymous;
+                _allowAnonymousToggle.IsOn = allowAnonymous;
             else
-                allowAnonymousBox.IsChecked = true;
+                _allowAnonymousToggle.IsOn = true;
             if (_settings.UserName is string userName)
                 userNameBox.Text = userName;
             if (_settings.Password is string password)
@@ -115,7 +115,7 @@ namespace UniversalFtpServer
                 return;
             }
 
-            var allowAnonymous = allowAnonymousBox.IsChecked == true;
+            var allowAnonymous = _allowAnonymousToggle.IsOn;
             string userName = userNameBox.Text;
             string password = passwordBox.Text;
 
@@ -265,7 +265,7 @@ namespace UniversalFtpServer
         private async void StopButton_Click(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, nameof(stoppedState), true);
-            if (allowAnonymousBox.IsChecked == true)
+            if (_allowAnonymousToggle.IsOn == true)
                 VisualStateManager.GoToState(this, nameof(anonymousState), false);
             else
                 VisualStateManager.GoToState(this, nameof(notAnonymousState), false);
@@ -280,14 +280,16 @@ namespace UniversalFtpServer
             await Launcher.LaunchFolderAsync(rootFolder);
         }
 
-        private void allowAnonymousBox_Checked(object sender, RoutedEventArgs e)
+        private void AllowAnonymousToggle_Toggled(object sender, RoutedEventArgs e)
         {
-            VisualStateManager.GoToState(this, nameof(anonymousState), true);
-        }
-
-        private void allowAnonymousBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            VisualStateManager.GoToState(this, nameof(notAnonymousState), true);
+            if (_allowAnonymousToggle.IsOn)
+            {
+                VisualStateManager.GoToState(this, nameof(anonymousState), true);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, nameof(notAnonymousState), true);
+            }
         }
 
         private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
