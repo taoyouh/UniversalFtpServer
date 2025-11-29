@@ -121,7 +121,7 @@
     <value>Ok</value>
   </data>
   <data name="MainPage_AddressesHint.Text" xml:space="preserve">
-    <value>Addresses of this device</value>
+    <value>FTP server address</value>
   </data>
   <data name="MainPage_AllowAnonymousLabel.Text" xml:space="preserve">
     <value>Allow anonymous</value>

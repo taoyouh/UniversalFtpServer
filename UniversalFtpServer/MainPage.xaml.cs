@@ -90,13 +90,8 @@ namespace UniversalFtpServer
             if (_settings.Password is string password)
                 passwordBox.Text = password;
 
-            var addresses = from host in NetworkInformation.GetHostNames()
-                            where host.Type == Windows.Networking.HostNameType.DomainName ||
-                                  host.Type == Windows.Networking.HostNameType.Ipv4 ||
-                                  host.Type == Windows.Networking.HostNameType.Ipv6
-                            select host.DisplayName;
-            addressesBlock.Text = string.Join('\n', addresses);
             NetworkInformation.NetworkStatusChanged += NetworkInformation_NetworkStatusChanged;
+            UpdateAddressesBlock();
         }
 
         private async void StartButton_Click(object sender, RoutedEventArgs e)
@@ -114,6 +109,8 @@ namespace UniversalFtpServer
                 NotifyUser(string.Format(loader.GetString(PortOutOfRange), IPEndPoint.MinPort, IPEndPoint.MaxPort));
                 return;
             }
+
+            UpdateAddressesBlock();
 
             var allowAnonymous = _allowAnonymousToggle.IsOn;
             string userName = userNameBox.Text;
@@ -242,11 +239,9 @@ namespace UniversalFtpServer
 
         private void NetworkInformation_NetworkStatusChanged(object sender)
         {
-            var addresses = from host in NetworkInformation.GetHostNames()
-                            select host.DisplayName;
             DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Normal, () =>
             {
-                addressesBlock.Text = string.Join('\n', addresses);
+                UpdateAddressesBlock();
             });
         }
 
@@ -347,6 +342,25 @@ namespace UniversalFtpServer
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AboutPage));
+        }
+
+        private void UpdateAddressesBlock()
+        {
+            IEnumerable<string> addresses = NetworkInformation.GetHostNames()
+                .Where(host => host.Type == Windows.Networking.HostNameType.DomainName ||
+                                  host.Type == Windows.Networking.HostNameType.Ipv4 ||
+                                  host.Type == Windows.Networking.HostNameType.Ipv6)
+                .Select(host =>
+                {
+                    string hostName = host.CanonicalName;
+                    UriBuilder builder = new(Uri.UriSchemeFtp, hostName);
+                    if (int.TryParse(portBox.Text, out int port) && port != 21)
+                    {
+                        builder.Port = port;
+                    }
+                    return builder.Uri.ToString();
+                });
+            addressesBlock.Text = string.Join('\n', addresses);
         }
     }
 }

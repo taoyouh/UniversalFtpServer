@@ -175,7 +175,7 @@
                         <TextBlock x:Uid="MainPage_AddressesHint"
                                    Margin="0,2"
                                    FontWeight="Bold"
-                                   Text="Addresses of this computer-"/>
+                                   Text="FTP server address-"/>
                         <TextBlock x:Name="addressesBlock"
                                    Margin="0,2"
                                    IsTextSelectionEnabled="True"/>
