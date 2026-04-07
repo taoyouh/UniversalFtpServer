@@ -37,7 +37,8 @@
     <!-- _locComment_text="{MaxLength=255} App DevStudio" -->
   </DevStudio>
   <ReleaseNotes _locID="App_ReleaseNotes">
-    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.6.0：更新隐私政策，优化兼容性
+    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->当前版本：提高FTP服务器的稳定性和兼容性
+1.6.0：更新隐私政策，优化兼容性
 1.5.2：优化系统任务视图外观
 1.5.1：修复日志和状态无法显示的问题。
 1.5.0：更新到WinUI 3。支持从本机访问FTP服务器。
