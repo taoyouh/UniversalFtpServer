@@ -37,7 +37,8 @@
     <!-- _locComment_text="{MaxLength=255} App DevStudio" -->
   </DevStudio>
   <ReleaseNotes _locID="App_ReleaseNotes">
-    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.6.0: Update privacy policy; Optimize compatibility
+    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->Current: Improve the stability and compatibility of the FTP server.
+1.6.0: Update privacy policy; Optimize compatibility
 1.5.2: Fix the appearance in Windows Task View
 1.5.1: Fix the bug that logs and status updates are not shown.
 1.5.0: Update to WinUI 3. Allow FTP access from localhost.
