@@ -395,5 +395,5 @@
     <MainPackageIdentityName>8966ZhaobangChina.186088FBDD1A3</MainPackageIdentityName>
     <MainPackageIdentityName>8966ZhaobangChina.9606FD8BBBF3</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NQKQ104HB9R" />
+  <PackageInfoList LandingUrl="https://devcenterapi.dce.mp.microsoft.com/dashboard/Application?appId=9NQKQ104HB9R" />
 </StoreAssociation>
