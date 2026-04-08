@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+    <Grid>
         <NavigationView PaneDisplayMode="Top" IsSettingsVisible="False" IsBackEnabled="{x:Bind _rootFrame.CanGoBack, Mode=OneWay}" BackRequested="NavigationView_BackRequested">
             <NavigationView.PaneCustomContent>
                 <Border x:Name="_appTitleBar" VerticalAlignment="Stretch" >
@@ -29,6 +29,6 @@
     </Grid>
 
     <Window.SystemBackdrop>
-        <MicaBackdrop Kind="BaseAlt" />
+        <MicaBackdrop Kind="Base" />
     </Window.SystemBackdrop>
 </Window>
