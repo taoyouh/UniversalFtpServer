@@ -37,7 +37,12 @@
     <!-- _locComment_text="{MaxLength=255} App DevStudio" -->
   </DevStudio>
   <ReleaseNotes _locID="App_ReleaseNotes">
-    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->Current: Improve the stability and compatibility of the FTP server.
+    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.7.0:
+• Update to .NET 8
+• Adopt Windows 11 style UI
+• Show full FTP server addresses (with ftp:// scheme and port) on main page
+• Update Windows App SDK to 1.8
+• Improve the stability and compatibility of the FTP server
 1.6.0: Update privacy policy; Optimize compatibility
 1.5.2: Fix the appearance in Windows Task View
 1.5.1: Fix the bug that logs and status updates are not shown.
