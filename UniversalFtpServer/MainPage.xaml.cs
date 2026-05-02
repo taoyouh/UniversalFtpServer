@@ -136,12 +136,12 @@ namespace UniversalFtpServer
                 {
                     server4 = new FtpServer(
                         ep4,
-                        new UwpFileProviderFactory(rootPath),
+                        new Zhaobang.FtpServer.File.SimpleFileProviderFactory(rootPath),
                         new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
                         new Zhaobang.FtpServer.Authenticate.AnonymousAuthenticator());
                     server6 = new FtpServer(
                         ep6,
-                        new UwpFileProviderFactory(rootPath),
+                        new Zhaobang.FtpServer.File.SimpleFileProviderFactory(rootPath),
                         new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
                         new Zhaobang.FtpServer.Authenticate.AnonymousAuthenticator());
                 }
@@ -149,12 +149,12 @@ namespace UniversalFtpServer
                 {
                     server4 = new FtpServer(
                         ep4,
-                        new UwpFileProviderFactory(rootPath),
+                        new Zhaobang.FtpServer.File.SimpleFileProviderFactory(rootPath),
                         new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
                         new Zhaobang.FtpServer.Authenticate.SimpleAuthenticator(userName, password));
                     server6 = new FtpServer(
                         ep6,
-                        new UwpFileProviderFactory(rootPath),
+                        new Zhaobang.FtpServer.File.SimpleFileProviderFactory(rootPath),
                         new Zhaobang.FtpServer.Connections.LocalDataConnectionFactory(),
                         new Zhaobang.FtpServer.Authenticate.SimpleAuthenticator(userName, password));
                 }
