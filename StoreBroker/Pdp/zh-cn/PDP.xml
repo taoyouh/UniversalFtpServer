@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ProductDescription language="en-us" xmlns="http://schemas.microsoft.com/appx/2012/ProductDescription" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="zh-cn" Release="2205">
+<ProductDescription language="en-us" xmlns="http://schemas.microsoft.com/appx/2012/ProductDescription" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="zh-cn" Release="2605">
   <AppStoreName _locID="App_AppStoreName">
     <!-- This is optional.  AppStoreName is typically extracted from your package's AppxManifest DisplayName property. -->
     <!-- Uncomment (and localize) this Store name if your application package does not contain a localization for the DisplayName in this language. -->
@@ -37,7 +37,8 @@
     <!-- _locComment_text="{MaxLength=255} App DevStudio" -->
   </DevStudio>
   <ReleaseNotes _locID="App_ReleaseNotes">
-    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.7.0:
+    <!-- _locComment_text="{MaxLength=1500} App Release Note" -->1.8.0：支持MLst FTP命令
+1.7.0:
 • 更新到.NET 8
 • 采用Windows 11风格UI
 • 显示完整FTP服务器地址（含ftp://协议和端口）
